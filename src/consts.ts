@@ -13,13 +13,13 @@ export type Link = {
 }
 
 export const SITE: Site = {
-    TITLE: 'example',
+    TITLE: 'Jose Barrios',
     DESCRIPTION:
         'My porfolio and experience',
-    EMAIL: 'email@email.com',
+    EMAIL: 'duck.jop@gmail.com',
     NUM_POSTS_ON_HOMEPAGE: 2,
     POSTS_PER_PAGE: 3,
-    SITEURL: 'https://example.vercel.app',
+    SITEURL: 'https://projectsjb.website/',
 }
 
 export const NAV_LINKS: Link[] = [
