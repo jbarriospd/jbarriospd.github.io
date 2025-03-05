@@ -1,3 +1,12 @@
+
+.container {
+  margin: 0 auto;
+  width: 49%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .avatar {
   position: relative;
   display: flex;
@@ -39,18 +48,5 @@
 
 /* Irrelevant styling */
 
-html,
-body {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 20px;
-  place-items: center;
-}
+
