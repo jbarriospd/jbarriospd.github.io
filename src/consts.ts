@@ -19,7 +19,7 @@ export const SITE: Site = {
     EMAIL: 'duck.jop@gmail.com',
     NUM_POSTS_ON_HOMEPAGE: 2,
     POSTS_PER_PAGE: 3,
-    SITEURL: 'https://projectsjb.website/',
+    SITEURL: 'https://jbarriospd.github.io/',
 }
 
 export const NAV_LINKS: Link[] = [
@@ -31,5 +31,5 @@ export const NAV_LINKS: Link[] = [
 
 export const SOCIAL_LINKS: Link[] = [
     { href: 'https://github.com/jbarriospd', label: 'GitHub' },
-    { href: 'email@email.com', label: 'Email' },
+    { href: 'duck.jop@gmail.com', label: 'Email' },
 ]
