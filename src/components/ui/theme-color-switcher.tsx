@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState, useCallback } from 'preact/hooks';
-import styles from '@/styles/SchemeColorSwitcher.module.css';
 
 const SCHEMES = {
     SYSTEM: 'system',
@@ -10,17 +9,22 @@ const SCHEMES = {
 
 type Scheme = 'system' | 'dark' | 'theme-light';
 
-const SchemeColorSwitcher = () => {
-    const [scheme, setScheme] = useState<Scheme>('system')
+const ThemeColorSwitcher = () => {
+    const [theme, setThemeState] = useState<Scheme>('system');
 
     const slider = useRef<HTMLDivElement>(null);
     const switcher = useRef<HTMLElement>(null);
 
     useEffect(() => {
+        const isDarkMode = document.documentElement.classList.contains('dark')
+        setThemeState(isDarkMode ? 'dark' : 'theme-light')
+    }, [])
+
+    useEffect(() => {
         const isDark =
-            scheme === 'dark' ||
-            (scheme === 'system' &&
-                window.matchMedia('(prefers-color-scheme: dark)').matches)
+            theme === 'dark' ||
+            (theme === 'system' &&
+                window.matchMedia('(prefers-color-theme: dark)').matches)
 
         document.documentElement.classList.add('disable-transitions')
 
@@ -34,53 +38,58 @@ const SchemeColorSwitcher = () => {
             document.documentElement.classList.remove('disable-transitions')
         })
 
-    }, [scheme]);
+    }, [theme]);
 
     const handleChange = useCallback((e: Event) => {
         e.preventDefault();
         const target = e.target as HTMLInputElement;
-        setScheme(target.value as Scheme);
+
+        setThemeState(target.value as Scheme);
         if (slider.current) {
             slider.current.style.transform = `translateX(${target.dataset.location})`;
         }
+
     }, []);
 
     return (
-        <section ref={switcher} className="shadow-2xs">
-            <div ref={slider} className="bg-blue-400" />
-            <label data-checked={scheme === SCHEMES.LIGHT} title="light">
+        <section ref={switcher} className="relative h-6 flex bg-amber-300 items-center overflow-hidden rounded-md">
+            <div ref={slider} className="absolute border border-red-500 h-full w-5 top-0 bottom-0 left-0" />
+            <label data-checked={theme === SCHEMES.LIGHT} title="light">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.LIGHT}
                     type="radio"
                     data-location="0"
+                    className="appearance-none"
                 />
                 <span aria-label="day" role="img">
                     🌞
                 </span>
             </label>
 
-            <label data-checked={scheme === SCHEMES.SYSTEM} title="system">
+            <label data-checked={theme === SCHEMES.SYSTEM} title="system">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.SYSTEM}
                     type="radio"
                     data-location="calc(100% - 2px)"
+                    className="appearance-none"
                 />
                 <span aria-label="system" role="img">
                     💻
                 </span>
             </label>
 
-            <label data-checked={scheme === SCHEMES.DARK} title="dark">
+            <label data-checked={theme === SCHEMES.DARK} title="dark">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.DARK}
                     type="radio"
                     data-location="calc(200% - 4px)"
+                    className="appearance-none"
                 />
                 <span aria-label="night" role="img">
                     🌚
@@ -90,4 +99,8 @@ const SchemeColorSwitcher = () => {
     );
 };
 
-export default SchemeColorSwitcher;
+export default ThemeColorSwitcher;
+
+<style>
+
+</style>

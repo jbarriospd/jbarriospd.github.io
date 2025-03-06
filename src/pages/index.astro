@@ -1,14 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/Container.astro";
-
+import Hero from "@/components/Hero.astro";
 import { SITE } from "@/consts";
 ---
 
 <Layout title="Home" description={SITE.DESCRIPTION}>
 	<Container class="flex flex-col gap-y-6">
-		<section>
-			<p>welcome</p>
-		</section>
+		<Hero />
 	</Container>
 </Layout>

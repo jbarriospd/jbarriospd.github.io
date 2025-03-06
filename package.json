@@ -12,7 +12,7 @@
     "@astrojs/preact": "^4.0.5",
     "@fontsource-variable/azeret-mono": "5.2.5",
     "@tailwindcss/vite": "^4.0.9",
-    "astro": "5.3.1",
+    "astro": "5.4.2",
     "clsx": "2.1.1",
     "preact": "10.26.3",
     "tailwind-merge": "3.0.2",
