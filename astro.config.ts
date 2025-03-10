@@ -6,7 +6,7 @@ import preact from '@astrojs/preact';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://projectsjb.website',
+  site: 'https://me.projectsjb.website',
   integrations: [
     preact(),
   ],

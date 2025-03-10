@@ -6,7 +6,6 @@ const SCHEMES = {
     LIGHT: 'theme-light',
 };
 
-
 type Scheme = 'system' | 'dark' | 'theme-light';
 
 const ThemeColorSwitcher = () => {
@@ -18,6 +17,9 @@ const ThemeColorSwitcher = () => {
     useEffect(() => {
         const isDarkMode = document.documentElement.classList.contains('dark')
         setThemeState(isDarkMode ? 'dark' : 'theme-light')
+
+
+
     }, [])
 
     useEffect(() => {
@@ -27,7 +29,6 @@ const ThemeColorSwitcher = () => {
                 window.matchMedia('(prefers-color-theme: dark)').matches)
 
         document.documentElement.classList.add('disable-transitions')
-
         document.documentElement.classList[isDark ? 'add' : 'remove']('dark')
 
         window
@@ -37,6 +38,11 @@ const ThemeColorSwitcher = () => {
         requestAnimationFrame(() => {
             document.documentElement.classList.remove('disable-transitions')
         })
+
+        const target = switcher.current?.querySelector('[data-checked="true"]')?.querySelector('input')
+        if (slider.current && target) {
+            slider.current.style.transform = 'translateX(' + target.dataset.location + ')';
+        }
 
     }, [theme]);
 
@@ -52,55 +58,45 @@ const ThemeColorSwitcher = () => {
     }, []);
 
     return (
-        <section ref={switcher} className="relative h-6 flex bg-amber-300 items-center overflow-hidden rounded-md">
-            <div ref={slider} className="absolute border border-red-500 h-full w-5 top-0 bottom-0 left-0" />
-            <label data-checked={theme === SCHEMES.LIGHT} title="light">
+        <section ref={switcher} className="relative flex items-center overflow-hidden rounded-full border-1 h-6.5">
+            <div ref={slider} className="absolute bg-blue-200 w-7 top-0 bottom-0 left-0 border-0 pointer-events-none transition transform duration-300" />
+            <label className="px-1 hover:bg-blue-300 z-10 cursor-pointer opacity-50 data-[checked=true]:opacity-100" data-checked={theme === SCHEMES.LIGHT} title="light">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.LIGHT}
                     type="radio"
                     data-location="0"
-                    className="appearance-none"
+                    className="appearance-none "
                 />
-                <span aria-label="day" role="img">
-                    🌞
-                </span>
+                <span aria-label="day" role="img" >🌞</span>
             </label>
 
-            <label data-checked={theme === SCHEMES.SYSTEM} title="system">
+            <label className="px-1 hover:bg-blue-300 z-10 cursor-pointer opacity-50 data-[checked=true]:opacity-100" data-checked={theme === SCHEMES.SYSTEM} title="system">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.SYSTEM}
                     type="radio"
-                    data-location="calc(100% - 2px)"
-                    className="appearance-none"
+                    data-location="calc(200% - 28px)"
+                    className="appearance-none "
                 />
-                <span aria-label="system" role="img">
-                    💻
-                </span>
+                <span aria-label="system" role="img" >💻</span>
             </label>
 
-            <label data-checked={theme === SCHEMES.DARK} title="dark">
+            <label className="px-1 hover:bg-blue-300 z-10 cursor-pointer opacity-50 data-[checked=true]:opacity-100" data-checked={theme === SCHEMES.DARK} title="dark">
                 <input
                     onChange={handleChange}
                     name="switch"
                     value={SCHEMES.DARK}
                     type="radio"
-                    data-location="calc(200% - 4px)"
-                    className="appearance-none"
+                    data-location="calc(300% - 28px)"
+                    className="appearance-none "
                 />
-                <span aria-label="night" role="img">
-                    🌚
-                </span>
+                <span aria-label="night" role="img" >🌚</span>
             </label>
         </section>
     );
 };
 
 export default ThemeColorSwitcher;
-
-<style>
-
-</style>

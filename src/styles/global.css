@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
 html {
-    color-scheme: light;
+  color-scheme: light;
 
-    &.dark {
-        color-scheme: dark;
-    }
+  &.dark {
+    color-scheme: dark;
+  }
+}
 
+.dark\:blend {
+  &:where(.dark, .dark *) {
+    background-color: color-mix(in oklab, var(--color-sky-950), var(--color-sky-900));
+  }
 }
 
 body {

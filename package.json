@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/preact": "^4.0.5",
-    "@fontsource-variable/onest": "^5.2.5",
-    "@tailwindcss/vite": "^4.0.9",
+    "@astrojs/preact": "4.0.5",
+    "@fontsource-variable/onest": "5.2.5",
+    "@tailwindcss/vite": "4.0.9",
     "astro": "5.4.2",
     "clsx": "2.1.1",
     "preact": "10.26.3",
