@@ -1,19 +1,61 @@
 @import "tailwindcss";
 
-html {
-  color-scheme: light;
+@custom-variant dark (&:is(.dark *));
 
-  &.dark {
-    color-scheme: dark;
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
   }
 }
 
-.dark\:blend {
-  &:where(.dark, .dark *) {
-    background-color: color-mix(in oklab, var(--color-sky-950), var(--color-sky-900));
+@layer utilities {
+  html {
+    overflow-y: auto;
+    color-scheme: light;
+    scroll-padding-top: 100px;
+
+    &.dark {
+      color-scheme: dark;
+    }
   }
 }
 
-body {
-  font-family: 'Onest Variable', sans-serif;
+html.dark {
+  color-scheme: dark;
+}
+
+@layer utilities {
+
+  html,
+  body {
+    font-family: 'Onest Variable', sans-serif;
+    @apply size-full;
+  }
+
+  footer {
+    @apply py-6 text-sm;
+  }
+
+}
+
+.animate {
+  @apply -translate-y-3 opacity-0;
+  @apply transition-all duration-300 ease-out;
+}
+
+.animate.show {
+  @apply translate-y-0 opacity-100;
+}
+
+html #back-to-top {
+  @apply pointer-events-none opacity-0;
+}
+
+html.scrolled #back-to-top {
+  @apply pointer-events-auto opacity-100;
 }
