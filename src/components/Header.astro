@@ -7,10 +7,7 @@ import { Image } from "astro:assets";
 import logo from "@/assets/astro.svg";
 ---
 
-<header
-    class="sticky top-0 z-10 bg-background/50 backdrop-blur-md"
-    transition:persist
->
+<header class="sticky top-0 z-10" transition:persist>
     <Container>
         <div class="flex flex-wrap items-center justify-between gap-4 py-4">
             <Link
@@ -24,10 +21,7 @@ import logo from "@/assets/astro.svg";
                 <nav class="hidden items-center gap-4 text-sm sm:gap-6 md:flex">
                     {
                         NAV_LINKS.map((item) => (
-                            <Link
-                                href={item.href}
-                                class="capitalize text-foreground/60 transition-colors hover:text-foreground/80"
-                            >
+                            <Link href={item.href} class="capitalize">
                                 {item.label}
                             </Link>
                         ))

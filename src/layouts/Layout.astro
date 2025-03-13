@@ -1,5 +1,5 @@
 ---
-import '@fontsource-variable/onest';
+import "@fontsource-variable/onest";
 import "@/styles/global.css";
 
 import Head from "@/components/Head.astro";
@@ -25,9 +25,7 @@ const { title, description, image } = Astro.props;
 		/>
 	</head>
 	<body>
-		<div
-			class="box-border flex h-fit min-h-screen flex-col gap-y-6 antialiased"
-		>
+		<div class="box-border flex h-fit min-h-screen flex-col gap-y-6">
 			<Header />
 			<main class="flex-grow">
 				<slot />

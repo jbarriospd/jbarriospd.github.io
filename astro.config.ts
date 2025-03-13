@@ -13,7 +13,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  image: {
-    service: passthroughImageService(),
+  experimental: {
+    svg: {
+      mode: 'sprite',
+    },
   },
 });
