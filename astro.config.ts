@@ -8,7 +8,7 @@ export default defineConfig({
    service: passthroughImageService(),
   },
   site: 'https://jbarriospd.github.io/',
-  base: 'my-repo',
+  base: 'jbarriospd.github.io',
   vite: {
     plugins: [tailwindcss()]
   },
